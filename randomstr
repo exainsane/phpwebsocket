@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+void getStrings(char **strs, int count, int minlength, int maxlength){		
+	srand(time(NULL));
+	int i;int j;
+	for(i = 0;i < count;i++){		
+		int randlength = ((rand() % (maxlength - minlength)) ) + minlength;
+		printf("loop i %d len : %d\n",i,randlength);
+		char buffer[randlength];
+		for(j = 0;j < randlength;j++){			
+			printf("loop j %d\n",j);
+			int v = ((rand() % 26)) + 65;
+			buffer[j] = v;			
+			printf("loop j :  %c\n",v);			
+		}
+		printf("%s \n",strs[i]);
+		
+		strcpy(strs[i],buffer);
+			
+		printf("Randomized : %s %d\n",strs[i],strlen(strs[i])),strlen(buffer);		
+		
+	}		
+}
+
+main(){
+	int len = 50,i,j,maxlength = 10,minlength = 5;
+	char strs[len][100];
+//	getStrings(strs,len,6,10);
+
+	srand(time(NULL));	
+	for(i = 0;i < len;i++){		
+		int randlength = ((rand() % (maxlength - minlength)) ) + minlength;
+		printf("loop i %d len : %d\n",i,randlength);
+		char buffer[randlength];
+		for(j = 0;j < randlength;j++){			
+			printf("loop j %d\n",j);
+			int v = ((rand() % 26)) + 65;
+			buffer[j] = v;			
+			printf("loop j :  %c\n",v);			
+		}
+		
+		strcpy(strs[i],buffer);		
+	}
+	for(i = 0;i < len;i++){
+		printf("%s : %d\n",strs[i],strlen(strs[i]));
+	}
+}
